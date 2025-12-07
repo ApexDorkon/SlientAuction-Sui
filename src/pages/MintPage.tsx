@@ -8,13 +8,16 @@ import { parseInputToMist } from "../utils/formatting";
 const PACKAGE_ID = "0xe1f938a310c951b735e0ae7fe3da6962d1dc807a651f5aa9a0fb0c7ecbf678ba"; 
 const TREASURY_CAP_ID = "0x11ffc09db463944e60a2d400f3b554dbba05785e6b0a9c5062430f078e3257d6";
 
-export default function MintPage({ onNavigate }: { onNavigate: (v: ViewState) => void }) {
+// FIX 1: Rename 'onNavigate' to '_onNavigate' to silence the "unused variable" error
+export default function MintPage({ onNavigate: _onNavigate }: { onNavigate: (v: ViewState) => void }) {
     const { mutate: signAndExecute } = useSignAndExecuteTransaction();
     const account = useCurrentAccount();
     
     const [nftName, setNftName] = useState("Blue Horizon NFT");
     const [nftUrl, setNftUrl] = useState("https://api.dicebear.com/9.x/shapes/svg?seed=Blue");
-    const [nftDesc, setNftDesc] = useState("A unique digital collectible.");
+    
+    // FIX 2: Removed 'setNftDesc' because it was unused
+    const [nftDesc] = useState("A unique digital collectible.");
 
     const [treasuryId, setTreasuryId] = useState(TREASURY_CAP_ID); 
     const [mintAmount, setMintAmount] = useState("1000");
@@ -106,7 +109,7 @@ export default function MintPage({ onNavigate }: { onNavigate: (v: ViewState) =>
                                     placeholder="Name" 
                                     value={nftName} 
                                     onChange={e=>setNftName(e.target.value)}
-                                    style={{ background: 'var(--gray-2)' }} // Gray bg for input
+                                    style={{ background: 'var(--gray-2)' }} 
                                 />
                                 <TextField.Root 
                                     variant="surface" 

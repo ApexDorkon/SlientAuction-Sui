@@ -2,8 +2,9 @@ import { Buffer } from "buffer";
 
 // 1. Immediate Polyfill (Must be first)
 if (typeof window !== "undefined") {
-  window.global = window;
-  window.Buffer = Buffer;
+  // FIX: Cast to 'any' so TypeScript allows adding new properties
+  (window as any).global = window;
+  (window as any).Buffer = Buffer;
 }
 
 import React from "react";

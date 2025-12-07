@@ -37,7 +37,7 @@ export async function getEnclavePublicKey(): Promise<string> {
 // UPDATE: Added 'pricePerUnit' argument
 export async function encryptBidForNautilus(
     amount: number, 
-    pricePerUnit: number, // <--- NEW ARGUMENT
+    pricePerUnit: number, 
     profile: SocialProfile, 
     bidderAddress: string
 ): Promise<{bytes: Uint8Array, hex: string}> {
@@ -70,10 +70,11 @@ export function calculateSocialMultiplier(profile: SocialProfile): number {
     return multiplier;
 }
 
+// FIX: Renamed 'capSui' to '_capSui' to silence unused variable error
 export async function getEnclaveSolution(
     encryptedBids: string[],
     totalTokens: number,
-    capSui: number
+    _capSui: number 
 ) {
     // We pass 0 for min/max here if not strict, or you can update this signature too.
     // For now, let's pass a wide range to ensure the enclave accepts it.
