@@ -6,7 +6,7 @@ import MintPage from "./pages/MintPage";
 import CreateAuction from "./pages/CreateAuction";
 import AuctionDetail from "./pages/AuctionDetail";
 import { ViewState } from "./types";
-
+import logoImg from "./assets/SlientAuctionLogo.png";
 function App() {
   const account = useCurrentAccount();
   const [view, setView] = useState<ViewState>('lobby');
@@ -42,20 +42,16 @@ function App() {
 
             {/* BRAND BLOCK */}
             <Flex align="center" gap="3" style={{ cursor: "pointer" }} onClick={() => handleNav("lobby")}>
-              <Box
-                style={{
-                  width: 44,
-                  height: 44,
-                  borderRadius: 14,
-                  background: "linear-gradient(135deg, #6366F1, #A5B4FC)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  boxShadow: "0 10px 30px rgba(99,102,241,0.5)",
-                }}
-              >
-                <Text weight="bold" size="5" style={{ color: "white" }}>SA</Text>
-              </Box>
+              <Box style={{ 
+    width: 40, height: 40, // Slightly larger to fit the logo nicely
+    background: 'white', 
+    borderRadius: '10px', 
+    display: 'flex', alignItems: 'center', justifyContent: 'center',
+    boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+    overflow: 'hidden' // Ensures square logos don't poke out
+}}>
+    <img src={logoImg} alt="SilentAuction Logo" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+</Box>
 
               <Box>
                 <Heading size="4" style={{ color: "white", letterSpacing: "-0.5px" }}>
@@ -125,20 +121,28 @@ function App() {
               }}
             >
               <Box
-                style={{
-                  width: 80,
-                  height: 80,
-                  borderRadius: 20,
-                  background: "linear-gradient(135deg, #6366F1, #A5B4FC)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  margin: "0 auto 24px",
-                  boxShadow: "0 20px 40px rgba(99,102,241,0.4)",
-                }}
-              >
-                <Text weight="bold" size="8" style={{ color: "white" }}>🔒</Text>
-              </Box>
+  style={{
+    width: 100, // Slightly larger for the main hero section
+    height: 100,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    margin: "0 auto 24px",
+    // We remove the container gradient background so your logo stands out
+  }}
+>
+   <img 
+     src={logoImg} 
+     alt="SilentAuction Logo" 
+     style={{ 
+       width: '100%', 
+       height: '100%', 
+       objectFit: 'contain', 
+       borderRadius: 24, // Matches the aesthetic
+       boxShadow: "0 20px 40px rgba(99,102,241,0.3)" // Adds depth to the image itself
+     }} 
+   />
+</Box>
 
               <Heading size="9" mb="4" style={{ color: "var(--indigo-11)", letterSpacing: "-1px" }}>
                 SilentAuction
