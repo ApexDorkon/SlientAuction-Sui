@@ -1,0 +1,1 @@
+export type ViewState = 'lobby' | 'create' | 'detail' | 'mint';
