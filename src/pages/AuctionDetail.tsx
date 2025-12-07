@@ -289,12 +289,28 @@ export default function AuctionDetail({ auctionId, onNavigate }: { auctionId: st
                                         <Table.ColumnHeaderCell align="right" style={{color: '#1E293B', fontWeight: 600}}>Outcome</Table.ColumnHeaderCell>
                                     </Table.Row>
                                 </Table.Header>
-                                <Table.Body>
-                                    {currentBids.length === 0 && <Table.Row><Table.Cell colSpan={3}><Text color="gray">No bids placed yet.</Text></Table.Cell></Table.Row>}
+                               <Table.Body>
+                                    {currentBids.length === 0 && (
+                                        <Table.Row>
+                                            <Table.Cell colSpan={3}><Text color="gray">No bids placed yet.</Text></Table.Cell>
+                                        </Table.Row>
+                                    )}
                                     {currentBids.map((bid, i) => (
                                         <Table.Row key={i}>
-                                            <Table.Cell><Strong style={{color: '#0F172A'}}>{bid.handle}</Strong></Table.Cell>
-                                            <Table.Cell><Badge style={{ background: '#F1F5F9', color: '#64748B' }}>Encrypted Payload</Badge></Table.Cell>
+                                            <Table.Cell>
+                                                <Strong style={{color: '#0F172A'}}>{bid.handle}</Strong>
+                                            </Table.Cell>
+                                            
+                                            {/* START CHANGE: Dynamic Privacy Status */}
+                                            <Table.Cell>
+                                                {!enclaveResult ? (
+                                                    <Badge style={{ background: '#F1F5F9', color: '#64748B' }}>🔒 Encrypted Payload</Badge>
+                                                ) : (
+                                                    <Badge color="teal" variant="soft">✅ TEE Verified</Badge>
+                                                )}
+                                            </Table.Cell>
+                                            {/* END CHANGE */}
+
                                             <Table.Cell align="right">{getBidStatus(bid.bidder)}</Table.Cell>
                                         </Table.Row>
                                     ))}
