@@ -10,7 +10,6 @@
 ## 🏆 Project Highlights
 * **Ankara Sui Hackathon Winner:** 
 * **Live Demo:** [https://slientauction.netlify.app](https://slientauction.netlify.app)
-* **Video Demo:** [](Coming Soon)
 
 ---
 
@@ -24,19 +23,6 @@ On public blockchains, **transparency is a bug, not a feature** for auctions.
 
 ---
 
-## 📸 Screenshots
-
-| **The Marketplace** | **Encrypted Bidding** |
-|:---:|:---:|
-| ![Lobby](https://placehold.co/600x400?text=Lobby+Screenshot) | ![Bid Form](https://placehold.co/600x400?text=Bid+Form+Screenshot) |
-| *Browse active privacy auctions* | *Client-side encryption in action* |
-
-| **The Enclave Proof** | **Verifiable Settlement** |
-|:---:|:---:|
-| ![AWS Proof](https://placehold.co/600x400?text=AWS+Console+Proof) | ![Settlement](https://placehold.co/600x400?text=Sui+Transaction+Proof) |
-| *AWS Nitro Enclave running in isolation* | *Final results posted on-chain* |
-
----
 
 ## 🏗️ Architecture & Logic
 
@@ -111,5 +97,3 @@ Cryptography: eciesjs (Elliptic Curve Integrated Encryption Scheme)
 
 Backend: Rust, Axum, Tokio
 
-📄 License
-MIT License. Copyright (c) 2025 SilentAuction Contributors.
