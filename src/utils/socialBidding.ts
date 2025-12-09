@@ -5,7 +5,7 @@ if (typeof window !== 'undefined') {
     (window as any).Buffer = Buffer;
 }
 
-// Ensure this matches your AWS IP
+// Ensure this matches your AWS IP (via ngrok)
 const ENCLAVE_URL = 'https://unlucidly-preirrigational-ka.ngrok-free.dev'; 
 
 export interface SocialProfile {
@@ -24,7 +24,13 @@ export interface BidEntry {
 
 export async function getEnclavePublicKey(): Promise<string> {
   try {
-    const response = await fetch(`${ENCLAVE_URL}/health_check`);
+    // FIX: Added header to bypass ngrok warning page
+    const response = await fetch(`${ENCLAVE_URL}/health_check`, {
+        headers: {
+            "ngrok-skip-browser-warning": "true"
+        }
+    });
+
     if (!response.ok) throw new Error('Enclave offline');
     const data = await response.json();
     return data.pk; 
@@ -92,7 +98,10 @@ export async function getEnclaveSolutionWithConfig(
 ) {
     const response = await fetch(`${ENCLAVE_URL}/solve`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+            'Content-Type': 'application/json',
+            'ngrok-skip-browser-warning': 'true' // <--- FIX: Bypass ngrok warning
+        },
         body: JSON.stringify({
             encrypted_bids: encryptedBids,
             total_tokens: totalTokens,
