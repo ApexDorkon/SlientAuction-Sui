@@ -6,7 +6,7 @@ if (typeof window !== 'undefined') {
 }
 
 // Ensure this matches your AWS IP
-const ENCLAVE_URL = 'http://34.207.108.229:3000'; 
+const ENCLAVE_URL = 'https://unlucidly-preirrigational-ka.ngrok-free.dev'; 
 
 export interface SocialProfile {
     handle: string;

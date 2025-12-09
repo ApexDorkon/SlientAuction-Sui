@@ -9,7 +9,7 @@ use axum::{
 };
 use ecies::{decrypt, utils::generate_keypair};
 use fastcrypto::{ed25519::Ed25519KeyPair, traits::KeyPair};
-use nautilus_server::common::get_attestation; // KEEPING THIS IS CRITICAL
+use nautilus_server::common::get_attestation; 
 use nautilus_server::AppState;
 use serde::{Deserialize, Serialize};
 use std::sync::Arc;
@@ -20,7 +20,7 @@ use tracing::info;
 
 #[derive(Deserialize)]
 struct SolveRequest {
-    encrypted_bids: Vec<String>, // List of hex strings
+    encrypted_bids: Vec<String>, 
     total_tokens: u64,
     cap_sui: f64,
 }
